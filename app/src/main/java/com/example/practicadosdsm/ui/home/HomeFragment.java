@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -52,6 +54,14 @@ public class HomeFragment extends Fragment {
                 insertarList();
             }
         });
+        // TODO: 09-11-2023 hacer que al seleccionar la lista, muestra la info de cada consola
+        listConsolas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String descripcion = descriptInput.getText().toString();
+                Toast.makeText(getContext(),descripcion,Toast.LENGTH_SHORT).show();
+            }
+        });
 
         final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
@@ -68,10 +78,17 @@ public class HomeFragment extends Fragment {
 
         String consola = nameImput.getText().toString();
         String descripcion = descriptInput.getText().toString();
-        consolas.add("Consola: " + consola + "\nDescripción no va: "+ descripcion);
-        adapter.notifyDataSetChanged();
-        nameImput.setText("");
-        descriptInput.setText("");
+        if (!consola.isEmpty() && !descripcion.isEmpty()){
+            consolas.add("Consola: " + consola + "\nDescripción no va: "+ descripcion);
+            adapter.notifyDataSetChanged();
+            nameImput.setText("");
+            descriptInput.setText("");
+
+            Toast.makeText(getContext(),"Consola Agregada!!", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getContext(),"Todos los Campos son Obligatorios!!", Toast.LENGTH_SHORT).show();
+        }
 
     }
+
 }
