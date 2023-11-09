@@ -68,7 +68,7 @@ public class HomeFragment extends Fragment {
 
         String consola = nameImput.getText().toString();
         String descripcion = descriptInput.getText().toString();
-        consolas.add("Consola: " + consola + "\nDescripción: "+ descripcion);
+        consolas.add("Consola: " + consola + "\nDescripción no va: "+ descripcion);
         adapter.notifyDataSetChanged();
         nameImput.setText("");
         descriptInput.setText("");
