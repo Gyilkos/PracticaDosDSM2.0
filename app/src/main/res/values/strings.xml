@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PracticaDos</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="insert_btn">Agregar</string>
+    <string name="next_btn">Siguiente</string>
+    <string name="save_btn">Guardar</string>
+    <string name="search_btn">Buscar</string>
+    <string name="back_btn">Anterior</string>
+</resources>
