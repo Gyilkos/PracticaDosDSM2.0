@@ -9,6 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
+
+import com.example.practicadosdsm.R;
 
 import com.example.practicadosdsm.databinding.FragmentDashboardBinding;
 
@@ -28,7 +31,16 @@ public class DashboardFragment extends Fragment {
         dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
-
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        binding.backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(DashboardFragment.this)
+                        .navigate(R.id.action_navigation_dashboard_to_navigation_home);
+            }
+        });
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();

@@ -31,7 +31,7 @@
         android:id="@+id/nomImputTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="text"
         android:text="Nombre"
@@ -42,7 +42,7 @@
         android:id="@+id/ageInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="text"
         android:text="Edad"
@@ -53,7 +53,7 @@
         android:id="@+id/saveBtn"
         android:layout_width="112dp"
         android:layout_height="56dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="48dp"
         android:text="@string/save_btn"
         app:layout_constraintEnd_toEndOf="@+id/ageInput"
@@ -81,7 +81,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/personSearch"
-        app:layout_constraintVertical_bias="0.126" />
+        app:layout_constraintVertical_bias="0.246" />
 
     <EditText
         android:id="@+id/rutSearch"
@@ -105,8 +105,8 @@
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.655"
+        app:layout_constraintHorizontal_bias="0.724"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rutSearch"
-        app:layout_constraintVertical_bias="0.015" />
+        app:layout_constraintVertical_bias="0.01" />
 </androidx.constraintlayout.widget.ConstraintLayout>

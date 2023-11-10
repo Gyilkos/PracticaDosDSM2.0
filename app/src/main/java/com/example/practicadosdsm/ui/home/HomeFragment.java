@@ -1,5 +1,6 @@
 package com.example.practicadosdsm.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +15,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.practicadosdsm.databinding.FragmentHomeBinding;
+import com.example.practicadosdsm.ui.dashboard.DashboardFragment;
+
+import com.example.practicadosdsm.R;
 
 import java.util.ArrayList;
 
@@ -27,6 +33,8 @@ public class HomeFragment extends Fragment {
     private Button agregarBtn;
     private ArrayAdapter<String> adapter;
     private ArrayList<String> consolas;
+    private ArrayList<String> consolasS;
+    private TextView infConsola;
 
     private FragmentHomeBinding binding;
 
@@ -44,6 +52,7 @@ public class HomeFragment extends Fragment {
         agregarBtn = binding.insertBtn;
 
         consolas = new ArrayList<>();
+        consolasS = new ArrayList<>();
         adapter = new ArrayAdapter<>(this.getContext(), android.R.layout.simple_list_item_1, consolas);
         listConsolas.setAdapter(adapter);
 
@@ -68,6 +77,28 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        binding.nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(HomeFragment.this)
+                        .navigate(R.id.action_navigation_home_to_navigation_dashboard);
+            }
+        });
+
+        infConsola = (TextView) binding.infoConsola;
+        listConsolas = (ListView) binding.listaConsola;
+
+        listConsolas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                infConsola.setText(listConsolas.getItemAtPosition(i) + ".");
+            }
+        });
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -79,7 +110,8 @@ public class HomeFragment extends Fragment {
         String consola = nameImput.getText().toString();
         String descripcion = descriptInput.getText().toString();
         if (!consola.isEmpty() && !descripcion.isEmpty()){
-            consolas.add("Consola: " + consola + "\nDescripción no va: "+ descripcion);
+            consolas.add("Consola: " + consola + "\nDescripción: "+ descripcion);
+            consolasS.add(consola + ", " + descripcion);
             adapter.notifyDataSetChanged();
             nameImput.setText("");
             descriptInput.setText("");
@@ -90,5 +122,6 @@ public class HomeFragment extends Fragment {
         }
 
     }
+
 
 }
